@@ -42,13 +42,61 @@ describe 'api' do
     end
   end
 
-  describe '# get /api/players?sort' do
+  describe '#get /api/players?sort' do
     context 'when a sort parameter is entered' do
-      it 'returns players sorted by parameter' do
-
+      it 'returns all players sorted by parameter' do
+        #Arrange
+        player = Player.create(name: 'Suh', position: 'DT')
+        player = Player.create(name: 'Tannehil', position: 'QB')
+        player = Player.create(name: 'JJ Watt', position: 'OL')
+        player = Player.create(name: 'Ditka', position: 'Linebacker')
+        player = Player.create(name: 'Revis', position: 'Cornerback')
+        player = Player.create(name: 'Abe', position: 'Wideout')
+        #Act
+        get '/api/players?sort=name'
+        #Assert
+        #binding.pry
+        expect(JSON.parse(last_response.body).first['name']).to eq 'Abe'
       end
     end
   end
 
+  describe '#post /api/players' do
+    context 'when valid player info is entered' do
+      it 'creates new player' do
+        #Act
+        post '/api/players?name=Eifert&position=TE&healthy=true'
+        #Assert
+        expect(JSON.parse(last_response.body)['name']).to eq 'Eifert'
+      end
+    end
+  end
+
+  #figure out how to identify player by name.
+  describe '#patch /api/players/:id/:position' do
+    context 'when a valid player id and new position is given' do
+      it 'updates the position' do
+        #Arrange
+        player = Player.create(id: 1, name: 'Ditka', position: 'Linebacker')
+        #Act
+        patch '/api/players/1/DL'
+        #Assert
+        #binding.pry
+        expect(JSON.parse(last_response.body)['position']).to eq 'DL'
+      end
+    end
+  end
+
+  describe '#delete /api/players/:id' do
+    context 'when valid player id is given' do
+      it 'deletes the player' do
+        #Arrange
+        player = Player.create(id: 1, name: 'Ditka', position: 'Linebacker')
+        #Act
+        delete '/api/players/1'
+        expect(Player.find_by_id(1)).to eq nil
+      end
+    end
+  end
 
 end

@@ -37,16 +37,4 @@ describe Team do
     end
   end
 
-  # describe '#victims' do
-  #   it 'returns victims' do
-  #     weapon = Weapon.create(name: 'Horse-Dagger', kind: 'melee')
-  #     Victim.create(name: 'Bert', weapon: weapon)
-  #     Victim.create(name: 'Bruce', weapon: weapon)
-  #
-  #     expect(weapon.victims.length).to eq 2
-  #     expect(weapon.victims.first.name).to eq 'Bert'
-  #     expect(weapon.victims.last.name).to eq 'Bruce'
-  #   end
-  # end
-
 end
