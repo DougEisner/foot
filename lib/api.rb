@@ -21,8 +21,8 @@ post '/api/players' do
 end
 
 #TRY to do this finding player by name, not id
-patch '/api/players/:id/:position' do |id, position|
-  player = Player.find_by_id(id)
+patch '/api/players/:name/:position' do |name, position|
+  player = Player.find_by(name: name)
   if player.nil?
     halt 404
   end

@@ -73,15 +73,15 @@ describe 'api' do
   end
 
   #figure out how to identify player by name.
-  describe '#patch /api/players/:id/:position' do
-    context 'when a valid player id and new position is given' do
+  describe '#patch /api/players/:name/:position' do
+    context 'when a valid player name and new position is entered' do
       it 'updates the position' do
         #Arrange
-        player = Player.create(id: 1, name: 'Ditka', position: 'Linebacker')
+        player = Player.create(name: 'Ditka', position: 'Linebacker')
         #Act
-        patch '/api/players/1/DL'
+        patch '/api/players/Ditka/DL'
         #Assert
-        #binding.pry
+        binding.pry
         expect(JSON.parse(last_response.body)['position']).to eq 'DL'
       end
     end
