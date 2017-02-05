@@ -1,0 +1,9 @@
+require 'active_record'
+require 'pg'
+
+st: 'localhost'
+adapter: 'postgresql'
+database: 'football'
+username: 'DougEisner'
+encoding: 'utf8'
+pool: 5

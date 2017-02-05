@@ -1,4 +1,4 @@
-require_relative 'test_environment'
+require_relative 'environment'
 
 class CreateTables < ActiveRecord::Migration[5.0]
 
@@ -9,6 +9,7 @@ class CreateTables < ActiveRecord::Migration[5.0]
     end
 
     create_table :players do |t|
+      t.string :name
       t.string :name
       t.string :position
       t.boolean :healthy

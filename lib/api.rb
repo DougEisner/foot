@@ -1,6 +1,13 @@
+require 'active_record'
+require 'yaml'
 require 'sinatra'
 require_relative 'models/player'
 require_relative 'environment'
+
+database_config = YAML::load(File.open('config/database.yml'))
+
+ActiveRecord::Base.establish_connection(database_config)
+
 
 get '/api/players' do
   sort = params['sort'] || 'name'
@@ -20,7 +27,6 @@ post '/api/players' do
   player = Player.create(name: params[:name], position: params[:position], healthy: params[:healthy]).to_json
 end
 
-#TRY to do this finding player by name, not id
 patch '/api/players/:name/:position' do |name, position|
   player = Player.find_by(name: name)
   if player.nil?
