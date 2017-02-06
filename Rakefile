@@ -13,7 +13,7 @@ namespace :db do
     if database_config.blank?
       database_config = YAML::load(File.open('config/database.yml'))
     end
-    ActiveRecord::Base.establish_connection(connection_details)
+    ActiveRecord::Base.establish_connection(database_config)
     ActiveRecord::Migrator.migrate("db/migrate/")
   end
 
