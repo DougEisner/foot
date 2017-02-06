@@ -14,3 +14,7 @@ class Players < ActiveRecord::Migration[5.0]
   end
 
 end
+
+after do
+  ActiveRecord::Base.connection.close
+end
