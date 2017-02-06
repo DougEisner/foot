@@ -3,7 +3,6 @@ ruby '2.3.1'
 
 gem 'activerecord'
 gem 'pg'
-gem 'rack-test'
 gem 'sinatra'
 gem 'rake'
 
@@ -16,4 +15,5 @@ group :test do
   gem 'rspec'
   gem 'database_cleaner'
   gem 'shotgun'
+  gem 'rack-test'
 end

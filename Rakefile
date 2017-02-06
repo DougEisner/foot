@@ -5,10 +5,6 @@ require 'active_record'
 require 'pg'
 require 'yaml'
 
-after do
-  ActiveRecord::Base.connection.close
-end
-
 namespace :db do
 
   desc "Migrate the db"

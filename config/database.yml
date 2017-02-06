@@ -1,5 +1,4 @@
-
-st: 'localhost'
+host: 'localhost'
 adapter: 'postgresql'
 database: 'football'
 username: 'DougEisner'

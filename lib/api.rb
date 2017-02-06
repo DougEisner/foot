@@ -2,7 +2,6 @@ require 'active_record'
 require 'yaml'
 require 'sinatra'
 require_relative 'models/player'
-require_relative 'environment'
 
 database_config = YAML::load(File.open('config/database.yml'))
 
