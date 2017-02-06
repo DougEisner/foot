@@ -5,9 +5,9 @@ gem 'activerecord'
 gem 'pg'
 gem 'sinatra'
 gem 'rake'
+gem 'thin'
 
 group :development do
-  gem 'thin'
   gem 'shotgun'
 end
 
